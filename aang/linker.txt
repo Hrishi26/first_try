@@ -1,0 +1,31 @@
+https://www.nsnam.org/docs/release/3.7/tutorial/tutorial_18.html //first.cc example basic
+
+https://www.nsnam.org/docs/release/3.10/tutorial/html/building-topologies.html //Topology building
+
+
+https://www.nsnam.org/docs/release/3.9/tutorial/tutorial_31.html //TCP fifth.cc tutorial
+
+https://www.nsnam.org/docs/models/html/lte-user.html#x2-based-handover 
+https://www.nsnam.org/docs/models/html/lte-design.html#sec-handover-algorithm  //handover algorithm theory
+
+Plt for 4 node tcp
+set terminal png
+set output "dharini_gnu.png"
+set title "Packet Byte Count vs. Time \n\nTrace Source Path: /NodeList/*/$ns3::Ipv4L3Protocol/Tx"
+set xlabel "Time (Seconds)"
+set ylabel "Packet Byte Count"
+
+set key outside center below
+set datafile missing "-nan"
+plot "dharini_gnu.dat" index 0 title "Packet Byte Count-0" with linespoints, "dharini_gnu.dat" index 1 title "Packet Byte Count-1" with linespoints, "dharini_gnu.dat" index 2 title "Packet Byte Count-2" with linespoints, "dharini_gnu.dat" index 3 title "Packet Byte Count-3" with linespoints
+
+
+
+Exp 4 : for adding custom names for pdcp and rlc 
+Ptr<RadioBearerStatsCalculator> rlcStats = lteHelper->GetRlcStats ();
+  rlcStats->SetAttribute ("EpochDuration", TimeValue (Seconds (1.0)));
+ rlcStats-> SetAttribute ("DlRlcOutputFilename", StringValue ("DLRLCDharni.txt"));
+ rlcStats-> SetAttribute ("UlRlcOutputFilename", StringValue ("ULRLCDharni.txt"));
+  Ptr<RadioBearerStatsCalculator> pdcpStats = lteHelper->GetPdcpStats ();
+  pdcpStats->SetAttribute ("EpochDuration", TimeValue (Seconds (1.0)));
+
